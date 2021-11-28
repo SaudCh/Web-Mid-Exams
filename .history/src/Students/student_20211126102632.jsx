@@ -2,6 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 export default function Student() {
+  // const reg = useParams().register;
+  // const pro = useParams().program;
+  // const gender = useParams().gender;
+  // const date = useParams().date;
+
   const { register, program, gender, date } = useParams();
   return (
     <div>

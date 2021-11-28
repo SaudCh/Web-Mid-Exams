@@ -2,6 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 export default function Student() {
+  // const reg = useParams().register;
+  // const pro = useParams().program;
+  // const gender = useParams().gender;
+  // const date = useParams().date;
+
   const { register, program, gender, date } = useParams();
   return (
     <div>
@@ -17,8 +22,8 @@ export default function Student() {
         </thead>
         <tbody>
           <tr>
-            <th>{register}</th>
-            <td>{program}</td>
+            <th>{reg}</th>
+            <td>{pro}</td>
             <td>{gender}</td>
             <td>{date}</td>
           </tr>

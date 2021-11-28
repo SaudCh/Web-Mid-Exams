@@ -33,20 +33,22 @@ export default function Register() {
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
+            console.log(values);
+
             history.push(
               `/list/${values.registration}/${values.program}/${values.gender}/${values.date}`
             );
           }, 2000);
         }}
-        validate={(values) => {
-          let error = {};
+        // validate={(values) => {
+        //   let error = {};
 
-          if (values.program === "0") {
-            error.program = "Program Required";
-          }
+        //   if (values.program === "0") {
+        //     error.program = "Program Required";
+        //   }
 
-          return error;
-        }}
+        //   return error;
+        // }}
       >
         {({
           handleSubmit,
@@ -98,7 +100,7 @@ export default function Register() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 >
-                  <option value="0">Select Program</option>
+                  <option>Select Program</option>
                   <option value="BsCS">BsCS</option>
                   <option value="BsCE">BsSE</option>
                 </Field>

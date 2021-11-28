@@ -33,6 +33,8 @@ export default function Register() {
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
+            console.log(values);
+
             history.push(
               `/list/${values.registration}/${values.program}/${values.gender}/${values.date}`
             );

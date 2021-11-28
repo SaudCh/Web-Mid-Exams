@@ -33,6 +33,8 @@ export default function Register() {
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
+            console.log(values);
+
             history.push(
               `/list/${values.registration}/${values.program}/${values.gender}/${values.date}`
             );
@@ -41,9 +43,21 @@ export default function Register() {
         validate={(values) => {
           let error = {};
 
+          // if (!values.registration) {
+          //   error.registration = "Registration Number Required";
+          // }
+
           if (values.program === "0") {
             error.program = "Program Required";
           }
+
+          // if (!values.gender) {
+          //   error.gender = "Gender Required";
+          // }
+
+          // if (!values.date) {
+          //   error.date = "Date Required";
+          // }
 
           return error;
         }}

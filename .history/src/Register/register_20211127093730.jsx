@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -33,6 +33,8 @@ export default function Register() {
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
+            console.log(values);
+
             history.push(
               `/list/${values.registration}/${values.program}/${values.gender}/${values.date}`
             );
@@ -41,9 +43,21 @@ export default function Register() {
         validate={(values) => {
           let error = {};
 
+          // if (!values.registration) {
+          //   error.registration = "Registration Number Required";
+          // }
+
           if (values.program === "0") {
             error.program = "Program Required";
           }
+
+          // if (!values.gender) {
+          //   error.gender = "Gender Required";
+          // }
+
+          // if (!values.date) {
+          //   error.date = "Date Required";
+          // }
 
           return error;
         }}
@@ -58,18 +72,18 @@ export default function Register() {
         }) => (
           <Form onSubmit={handleSubmit}>
             {/*********Registration********** */}
-            <div className="row g-3 align-items-center my-3">
-              <div className="col-4 col-sm-2 ">
-                <label htmlFor="registration" className="col-form-label">
+            <div class="row g-3 align-items-center my-3">
+              <div class="col-4">
+                <label for="registration" class="col-form-label">
                   Registration
                 </label>
               </div>
-              <div className="col-8 col-sm-10 col-md-5">
+              <div class="col-8">
                 <Field
                   onChange={handleChange}
                   type="text"
                   id="registration"
-                  className="form-control"
+                  class="form-control"
                   name="registration"
                   value={values.registration}
                   onBlur={handleBlur}
@@ -77,24 +91,24 @@ export default function Register() {
               </div>
 
               {errors.registration && (
-                <div className="alert alert-danger col-7" role="alert">
+                <div class="alert alert-danger col-7" role="alert">
                   {errors.registration}
                 </div>
               )}
             </div>
             {/*********Program****** */}
-            <div className="row g-3 align-items-center my-3">
-              <div className="col-4 col-md-1">
-                <label htmlFor="program" className="col-form-label">
+            <div class="row g-3 align-items-center my-3">
+              <div class="col-1">
+                <label for="program" class="col-form-label">
                   Program
                 </label>
               </div>
-              <div className="col-8 col-md-5">
+              <div class="col-5">
                 <Field
                   name="program"
                   as="select"
                   id="program"
-                  className="form-select"
+                  class="form-select"
                   onChange={handleChange}
                   onBlur={handleBlur}
                 >
@@ -104,97 +118,85 @@ export default function Register() {
                 </Field>
               </div>
               {errors.program && (
-                <div className="alert alert-danger col-7" role="alert">
+                <div class="alert alert-danger col-7" role="alert">
                   {errors.program}
                 </div>
               )}
             </div>
             {/*********Gender****** */}
-            <div className="row g-3 align-items-center my-3">
-              <div className="col-4 col-md-1">
-                <label htmlFor="gender" className="col-form-label">
+            <div class="row g-3 align-items-center my-3">
+              <div class="col-1">
+                <label for="gender" class="col-form-label">
                   Gender
                 </label>
               </div>
-              <div className="col-8 col-md-5">
-                <div className="form-check">
+              <div class="col-5">
+                <div class="form-check">
                   <Field
-                    className="form-check-input"
+                    class="form-check-input"
                     type="radio"
                     name="gender"
                     value="male"
                     id="gender"
                   />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexRadioDefault1"
-                  >
+                  <label class="form-check-label" for="flexRadioDefault1">
                     Male
                   </label>
                 </div>
-                <div className="form-check">
+                <div class="form-check">
                   <Field
-                    className="form-check-input"
+                    class="form-check-input"
                     type="radio"
                     name="gender"
                     value="female"
                     id="gender"
                   />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexRadioDefault2"
-                  >
+                  <label class="form-check-label" for="flexRadioDefault2">
                     Female
                   </label>
                 </div>
               </div>
               {errors.gender && (
-                <div className="alert alert-danger col-7" role="alert">
+                <div class="alert alert-danger col-7" role="alert">
                   {errors.gender}
                 </div>
               )}
             </div>
             {/*********Date****** */}
-            <div className="row g-3 align-items-center my-3">
-              <div className="col-4 col-md-1">
-                <label htmlFor="date" className="col-form-label">
+            <div class="row g-3 align-items-center my-3">
+              <div class="col-1 ">
+                <label for="date" class="col-form-label">
                   Preferred date
                 </label>
               </div>
-              <div className="col-8 col-md-5">
-                <div className="form-check">
+              <div class="col-5">
+                <div class="form-check">
                   <Field
-                    className="form-check-input"
+                    class="form-check-input"
                     type="checkbox"
                     value="22-11-2021"
                     id="flexCheckDefault"
                     name="date"
                   />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexCheckDefault"
-                  >
+                  <label class="form-check-label" for="flexCheckDefault">
                     22-11-2021
                   </label>
                 </div>
-                <div className="form-check">
+                <div class="form-check">
                   <Field
-                    className="form-check-input"
+                    class="form-check-input"
                     type="checkbox"
                     value="25-11-2021"
                     id="flexCheckChecked"
                     name="date"
                   />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexCheckChecked"
-                  >
+                  <label class="form-check-label" for="flexCheckChecked">
                     25-11-2021
                   </label>
                 </div>
               </div>
               {errors.date && (
-                <div className="alert alert-danger col-7" role="alert">
+                <div class="alert alert-danger col-7" role="alert">
                   {errors.date}
                 </div>
               )}

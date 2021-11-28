@@ -42,7 +42,7 @@ export default function Header() {
                 to="/list/sp19-bcs-078/BCS/Male/22-11-201"
                 className="nav-link"
                 href="#"
-                tabIndex="-1"
+                tabindex="-1"
                 aria-disabled="true"
               >
                 Students
@@ -53,7 +53,7 @@ export default function Header() {
                 to="/register/"
                 className="nav-link"
                 href="#"
-                tabIndex="-1"
+                tabindex="-1"
                 aria-disabled="true"
               >
                 Registration
